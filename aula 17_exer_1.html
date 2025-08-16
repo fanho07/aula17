@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício DOM aula 17</title>
+    <style>
+        #container {
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="meuBotao">Clique aqui</button>
+    <div id="container"></div>
+
+    <script>
+        const botao = document.querySelector('#meuBotao')
+        botao.addEventListener('click', function () {
+            const novoParagrafo = document.createElement('p')
+            novoParagrafo.textContent = 'Elemento criado!'
+            const container = document.querySelector('#container')
+            container.appendChild(novoParagrafo)
+        });
+    </script>
+</body>
+
+</html>

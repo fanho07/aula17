@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta CEP</title>
+</head>
+<body>
+
+    <h1> Coloque seu CEP</h1>
+    <br>
+    <form id="formCEP">
+        <input type="text" id="cepInput" placeholder="Digite o CEP" maxlength="8">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <script>
+        document.getElementById('formCEP').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const cep = document.getElementById('cepInput').value.replace(/\D/g,'');
+            
+            try {
+                const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                const dados = await resposta.json();
+                console.log(dados.logradouro || 'CEP não encontrado');
+            } catch {
+                console.log('Erro na requisição');
+            }
+        });
+    </script>
+</body>
+</html>
